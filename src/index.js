@@ -2,8 +2,12 @@ const express = require("express");
 
 const app = express();
 
+var util = require('util');
+// var app_port = process.env.app_port || 3000;
+// var app_host = process.env.app_host || '127.0.0.1';
 
-
+var app_port = process.env.app_port || 8080;
+var app_host = process.env.app_host || '0.0.0.0';
 
 let personRoute = require ("./routes/person");
 let customerRoute = require ("./routes/customer");
@@ -73,4 +77,5 @@ app.post('/api/corsi/aggiungiCorso',(req,res)=>{
 
 });
 
-app.listen(3000, () => console.log('LISTENING!!'));
+
+app.listen(app_port, () => console.log('Web server running at http://' + app_host + ':' + app_port));
